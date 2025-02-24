@@ -23,7 +23,7 @@ const Login = () => {
               placeholder="Email"
               type="email"
             />
-          </FormGroup>
+          </FormGroup>{" "}
           <FormGroup>
             <Label for="examplePassword">Password</Label>
             <Input
@@ -32,7 +32,7 @@ const Login = () => {
               placeholder="Password"
               type="password"
             />
-          </FormGroup>{" "}
+          </FormGroup>
           <Button>Submit</Button>
         </Form>
         <p className="smalltext">
