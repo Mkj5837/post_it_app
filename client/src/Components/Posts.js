@@ -1,5 +1,3 @@
-
-
 const Posts = () => {
   return (
     <div className="postsContainer">
