@@ -1,23 +1,22 @@
 import "./App.css";
-import About from "./Components/About";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
-import Login from "./Components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "reactstrap"; //import the Reactstrap Components
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Container, Row, Column } from "reactstrap";
+import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
 
 const App = () => {
   return (
     <Container fluid>
-      {/* //fluid means it will use 100% of the screen. */}
       <Router>
         <Row>
           <Header />
         </Row>
+
         <Row className="main">
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -26,6 +25,7 @@ const App = () => {
             <Route path="/register" element={<Register />}></Route>
           </Routes>
         </Row>
+
         <Row>
           <Footer />
         </Row>

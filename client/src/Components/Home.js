@@ -6,7 +6,7 @@ import { Container, Row, Col } from "reactstrap"; //import the Reactstrap Compon
 
 const Home = () => {
   return (
-    <>
+    <div>
       <Row>
         <Col md={3}>
           <User />
@@ -21,7 +21,7 @@ const Home = () => {
           <Posts />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

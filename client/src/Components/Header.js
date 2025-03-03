@@ -1,28 +1,25 @@
 import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
+import logo from "../Images/logo-t.png";
 import { Link } from "react-router-dom";
-import applogo from "../Images/logo-t.png";
+
 const Header = () => {
   return (
     <>
       <Navbar className="header">
         <Nav>
           <NavItem>
-            <img src={applogo} className="logo" />
+            <img src={logo} />
           </NavItem>
           <NavItem>
-            <NavLink active>
-              <Link to="/">Home</Link>
-            </NavLink>
+            <Link to="/">Home</Link>
           </NavItem>
+
           <NavItem>
-            <NavLink active>
-              <Link to="/profile">Profile</Link>
-            </NavLink>
+            <Link to="/profile">Profile</Link>
           </NavItem>
+
           <NavItem>
-            <NavLink active href="#">
-              Logout
-            </NavLink>
+            <NavLink href="#">Logout</NavLink>
           </NavItem>
         </Nav>
       </Navbar>

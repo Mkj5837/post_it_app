@@ -7,21 +7,23 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
+
 const SharePosts = () => {
   return (
-    <>
+    <div>
+      <h1>SharePosts</h1>
       <Row>
         <Col>
           <Input
             id="share"
             name="share"
-            placeholder="Share What You're Thinking..."
+            placeholder="Share your thoughts..."
             type="textarea"
-          />
-          <Button>PostIt</Button>
+          ></Input>
+          <Button>PostIT</Button>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
