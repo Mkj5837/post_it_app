@@ -3,7 +3,10 @@ import { userSchemaValidation } from "../Validations/UserValidations";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSelector, userSelector } from "react-redux";
+import { useDispatch, useSelector, userDispatch } from "react-redux";
+import { useState } from "react";
+import { addUser, deleteUser, updateUse } from "../Features/UserSlice";
+
 import {
   Button,
   Col,
@@ -25,10 +28,29 @@ const Register = () => {
 
   const userList = useSelector((state) => state.users.value); //(this fetches data)you can put this anywhere, as long as its before the reurn statement.
 
-  // Handle form submission
+  const dispatch = useDispatch();
+  // Handle form submission:
+  //setting the states
+  const [name, setname] = useState();
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
 
   const onSubmit = (data) => {
-    console.log("Form Data", data); // You can handle the form submission here
+    // You can handle the form submission here.
+    console.log("Form data", data);
+
+    try {
+      const userData = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+      alert("Verfication all good.");
+      dispatch(addUser(userData)); //use the useDispatch hook to dispatch an action, passing as parameter the userData
+    } catch (err) {
+      console.log("Error", err);
+    }
   };
 
   return (
@@ -38,14 +60,27 @@ const Register = () => {
         <Row>
           <Col md={6}>
             Name<br></br>
-            <input type="text" name="name" {...register("name")}></input>
+            <input
+              type="text"
+              name="name"
+              {...register("name", {
+                onChange: (e) => setname(e.target.value),
+              })}
+            ></input>
+            {/* {name} to check that it works */}
           </Col>
           <p className="error">{errors.name?.message}</p>
         </Row>
         <Row>
           <Col md={6}>
             Email<br></br>
-            <input type="email" name="email" {...register("email")}></input>
+            <input
+              type="email"
+              name="email"
+              {...register("email", {
+                onChange: (e) => setemail(e.target.value),
+              })}
+            ></input>
           </Col>
           <p className="error">{errors.email?.message}</p>
         </Row>
@@ -55,7 +90,9 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              {...register("password")}
+              {...register("password", {
+                onChange: (e) => setpassword(e.target.value),
+              })}
             ></input>
           </Col>
           <p className="error">{errors.password?.message}</p>
@@ -66,7 +103,9 @@ const Register = () => {
             <input
               type="password"
               name="confirmpassword"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", {
+                onChange: (e) => setconfirmPassword(e.target.value),
+              })}
             ></input>
           </Col>
           <p className="error">{errors.confirmPassword?.message}</p>
@@ -84,9 +123,14 @@ const Register = () => {
             <tbody>
               {userList.map((user) => (
                 <tr key={user.email}>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
+                  <td>{user.name}</td> <td>{user.email}</td>
                   <td>{user.password}</td>
+                  <td>
+                    <button>edit</button>
+                  </td>
+                  <td>
+                    <button>delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>

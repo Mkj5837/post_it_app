@@ -7,7 +7,16 @@ const initialState = { value: UsersData };
 const userSlice = createSlice({
   name: "users", //this is a must.
   initialState, //this is also a must, its actually initialState:initialState but we shorten it.
-  reducer: {}, // anything we want to do goes here (like update, create, delete)
+  reducers: {
+    addUser: (state, action) => {
+      state.value.push(action.payload);
+      // using the push function cus the  values are in array payload just means "data"
+    },
+    deleteUser: (state, action) => {},
+    updateUser: (state, action) => {},
+  }, // anything we want to do goes here (like update, create, delete). you cant do anything without the reducer.
 });
+
+export const { addUser, deleteUser, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;
