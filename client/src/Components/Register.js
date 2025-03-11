@@ -53,6 +53,11 @@ const Register = () => {
     }
   };
 
+  const handleDelete = (email) => {
+    dispatch(deleteUser(email));
+    alert("User Deleted.");
+  };
+
   return (
     <Container>
       <h1>Register</h1>
@@ -119,17 +124,22 @@ const Register = () => {
       <Row>
         <Col md={6}>
           <h1>List of users</h1>
-          <table>
+          <table className="table">
             <tbody>
               {userList.map((user) => (
                 <tr key={user.email}>
                   <td>{user.name}</td> <td>{user.email}</td>
                   <td>{user.password}</td>
                   <td>
-                    <button>edit</button>
+                    <button className="btn btn-primary">Edit</button>
                   </td>
                   <td>
-                    <button>delete</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDelete(user.email)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

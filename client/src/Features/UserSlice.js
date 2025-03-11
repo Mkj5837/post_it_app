@@ -12,7 +12,9 @@ const userSlice = createSlice({
       state.value.push(action.payload);
       // using the push function cus the  values are in array payload just means "data"
     },
-    deleteUser: (state, action) => {},
+    deleteUser: (state, action) => {
+      state.value = state.value.filter((user) => user.email !== action.payload);
+    },
     updateUser: (state, action) => {},
   }, // anything we want to do goes here (like update, create, delete). you cant do anything without the reducer.
 });
