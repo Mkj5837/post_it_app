@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector, userDispatch } from "react-redux";
 import { useState } from "react";
 import { addUser, deleteUser, updateUse } from "../Features/UserSlice";
-import { Link } from "react-router-dom";
 
 import {
   Button,
@@ -20,7 +19,7 @@ import {
 } from "reactstrap";
 import logo from "../Images/logo-t.png";
 
-const Register = () => {
+const UpdateUser = () => {
   const {
     register,
     handleSubmit,
@@ -59,13 +58,9 @@ const Register = () => {
     alert("User Deleted.");
   };
 
-  // const handleUpdate = (email) => {
-  //   alert("Going to update page.");
-  // };
-
   return (
     <Container>
-      <h1>Register</h1>
+      <h1>UpdateUser</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Col md={6}>
@@ -122,40 +117,12 @@ const Register = () => {
         </Row>
         <Row>
           <Col md={6}>
-            <Button>Register</Button>
+            <Button>UpdateUser</Button>
           </Col>
         </Row>
       </Form>
-      <Row>
-        <Col md={6}>
-          <h1>List of users</h1>
-          <table className="table">
-            <tbody>
-              {userList.map((user) => (
-                <tr key={user.email}>
-                  <td>{user.name}</td> <td>{user.email}</td>
-                  <td>{user.password}</td>
-                  <td>
-                    <Link to="/update/${user.email}">
-                      <button className="btn btn-primary">Edit</button>
-                    </Link>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleDelete(user.email)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Col>
-      </Row>
     </Container>
   );
 };
 
-export default Register;
+export default UpdateUser;
