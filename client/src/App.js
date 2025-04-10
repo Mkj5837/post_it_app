@@ -24,8 +24,8 @@ const App = () => {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
             <Route path="/register" element={<Register />}></Route>
+            <Route path="/update" element={<UpdateUser />}></Route>
             <Route path="/update/:email" element={<UpdateUser />}></Route>
-            {/* parameterized router */}
           </Routes>
         </Row>
 

@@ -19,10 +19,6 @@ const Header = () => {
           </NavItem>
 
           <NavItem>
-            <Link to="/register">Register</Link>
-          </NavItem>
-
-          <NavItem>
             <NavLink href="#">Logout</NavLink>
           </NavItem>
         </Nav>

@@ -1,2 +1,5 @@
-GitHub: https://github.com/Mkj5837/post_it_app.git
-Render:https://post-it-app-ur9s.onrender.com
+Git hub
+https://github.com/piperhuntress/postit-app-sem2Ay24-25.git
+
+Render
+https://postit-app-sem2ay24-25.onrender.com/

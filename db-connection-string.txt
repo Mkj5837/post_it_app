@@ -1,0 +1,7 @@
+  "mongodb+srv://admin:admin12345@postitcluster.jshxolh.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
+
+{
+  "name": "maria",
+  "email": "maria@edu.om",
+  "password": "password123"
+}

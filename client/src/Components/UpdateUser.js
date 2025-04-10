@@ -3,9 +3,6 @@ import { userSchemaValidation } from "../Validations/UserValidations";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useDispatch, useSelector, userDispatch } from "react-redux";
-import { useState } from "react";
-import { addUser, deleteUser, updateUse } from "../Features/UserSlice";
 
 import {
   Button,
@@ -18,6 +15,9 @@ import {
   Form,
 } from "reactstrap";
 import logo from "../Images/logo-t.png";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { addUser, deleteUser, updateUser } from "../Features/UserSlice";
 
 const UpdateUser = () => {
   const {
@@ -26,41 +26,40 @@ const UpdateUser = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(userSchemaValidation) });
 
-  const userList = useSelector((state) => state.users.value); //(this fetches data)you can put this anywhere, as long as its before the reurn statement.
+  const userList = useSelector((state) => state.users.value);
 
-  const dispatch = useDispatch();
-  // Handle form submission:
-  //setting the states
-  const [name, setname] = useState();
+  const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
 
-  const onSubmit = (data) => {
-    // You can handle the form submission here.
-    console.log("Form data", data);
+  const dispatch = useDispatch();
+  // Handle form submission
 
+  const onSubmit = (data) => {
+    console.log("Form Data", data); // You can handle the form submission here
     try {
       const userData = {
         name: data.name,
         email: data.email,
         password: data.password,
       };
-      alert("Verfication all good.");
-      dispatch(addUser(userData)); //use the useDispatch hook to dispatch an action, passing as parameter the userData
-    } catch (err) {
-      console.log("Error", err);
+
+      dispatch(addUser(userData));
+      alert("User added.");
+    } catch (error) {
+      console.log(error);
     }
   };
 
   const handleDelete = (email) => {
     dispatch(deleteUser(email));
-    alert("User Deleted.");
+    alert("User deleted.");
   };
 
   return (
     <Container>
-      <h1>UpdateUser</h1>
+      <h1>Update User</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Col md={6}>
@@ -72,7 +71,7 @@ const UpdateUser = () => {
                 onChange: (e) => setname(e.target.value),
               })}
             ></input>
-            {/* {name} to check that it works */}
+            {name}
           </Col>
           <p className="error">{errors.name?.message}</p>
         </Row>
@@ -86,6 +85,7 @@ const UpdateUser = () => {
                 onChange: (e) => setemail(e.target.value),
               })}
             ></input>
+            {email}
           </Col>
           <p className="error">{errors.email?.message}</p>
         </Row>
@@ -117,7 +117,7 @@ const UpdateUser = () => {
         </Row>
         <Row>
           <Col md={6}>
-            <Button>UpdateUser</Button>
+            <Button>Update User</Button>
           </Col>
         </Row>
       </Form>
