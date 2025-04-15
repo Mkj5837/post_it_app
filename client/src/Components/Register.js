@@ -122,10 +122,10 @@ const Register = () => {
           </Col>
         </Row>
       </Form>
-      {/* <Row>
+      <Row>
         <Col md={6}>
           <h1>List of Users</h1>
-          <table className="table">
+          {/* <table className="table">
             <tbody>
               {userList.map((user) => (
                 <tr key={user.id}>
@@ -148,9 +148,9 @@ const Register = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> */}
         </Col>
-      </Row> */}
+      </Row>
     </Container>
   );
 };

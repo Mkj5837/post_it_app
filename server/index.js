@@ -10,7 +10,7 @@ app.use(cors());
 
 //Database connection
 const connectString =
-  "mongodb+srv://admin:admin12345@postitcluster.jshxolh.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
+  "mongodb+srv://admin:admin12345@postitcluster.vcbpdnh.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
 
 mongoose.connect(connectString);
 //API Routes
@@ -29,13 +29,33 @@ app.post("/registerUser", async (req, res) => {
     });
 
     await user.save();
-    res.send({ user: user, msg: "User Added." });
+    res.send({ user: user, msg: "Added." });
   } catch (error) {
     console.log(error);
   }
 });
 
-app.post("/login", async (req, res) => {});
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body; //using destructuring
+
+    //search the user
+    const user = await UserModel.findOne({ email: email });
+    //if not found
+    if (!user) {
+      return res.status(500).json({ error: "User not found." });
+    }
+    console.log(user);
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Authentication failed" });
+    }
+    //if everything is ok, send the user and message
+    res.status(200).json({ user, message: "Success." });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 app.put("/updateProfile", async (req, res) => {});
 
