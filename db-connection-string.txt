@@ -5,3 +5,10 @@
   "email": "maria@edu.om",
   "password": "password123"
 }
+
+const postSlice = createSlice({
+  name: "posts",
+  initialState: initialState,
+  reducers: {},
+  extraReducers: () => {},
+});

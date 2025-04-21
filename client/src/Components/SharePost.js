@@ -7,8 +7,16 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { savePost } from "../Features/PostSlice";
 
 const SharePosts = () => {
+  const [postMsg, setpostMsg] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const email = useSelector((state) => StaticRange.users.user.email);
   return (
     <div>
       <h1>SharePosts</h1>
