@@ -3,7 +3,6 @@ import { userSchemaValidation } from "../Validations/UserValidations";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import {
   Button,
   Col,
@@ -18,6 +17,8 @@ import logo from "../Images/logo-t.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { addUser, deleteUser, updateUser } from "../Features/UserSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const UpdateUser = () => {
   const {
@@ -34,6 +35,7 @@ const UpdateUser = () => {
   const [confirmPassword, setconfirmPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // Handle form submission
 
   const onSubmit = (data) => {
@@ -56,6 +58,12 @@ const UpdateUser = () => {
     dispatch(deleteUser(email));
     alert("User deleted.");
   };
+
+  useEffect(() => {
+    if (!email) {
+      navigate("/login");
+    }
+  }, [email]);
 
   return (
     <Container>

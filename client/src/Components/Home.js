@@ -3,8 +3,19 @@ import Posts from "./Posts";
 import SharePosts from "./SharePost";
 import User from "./User";
 import { Container, Row, Col } from "reactstrap"; //import the Reactstrap Components
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const email = useSelector((state) => state.users.user.email);
+  useEffect(() => {
+    if (!email) {
+      navigate("/login");
+    }
+  }, [email]);
   return (
     <div>
       <Row>

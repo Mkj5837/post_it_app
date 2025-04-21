@@ -53,6 +53,7 @@ const Login = () => {
     };
     dispatch(login(userData)); //dispatch a login action from the user slice.
   };
+
   useEffect(() => {
     if (isError) {
       navigate("/login");
@@ -64,6 +65,7 @@ const Login = () => {
       navigate("/login");
     }
   }, [user, isError, isSuccess]);
+
   return (
     <div>
       <Container>

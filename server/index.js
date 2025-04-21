@@ -10,7 +10,7 @@ app.use(cors());
 
 //Database connection
 const connectString =
-  "mongodb+srv://admin:admin12345@postitcluster.vcbpdnh.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
+  "mongodb+srv://admin:admin12345@postitcluster.jshxolh.mongodb.net/postITDb?retryWrites=true&w=majority&appName=PostITCluster";
 
 mongoose.connect(connectString);
 //API Routes
@@ -55,6 +55,11 @@ app.post("/login", async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+//POST API-logout
+app.post("/logout", async (req, res) => {
+  res.status(200).json({ message: "Logged out successfully" });
 });
 
 app.put("/updateProfile", async (req, res) => {});

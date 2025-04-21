@@ -9,13 +9,20 @@ import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
 import UpdateUser from "./Components/UpdateUser";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const email = useSelector((state) => state.users.user.email);
+
   return (
     <Container fluid>
       <Router>
         <Row>
-          <Header />
+          {email ? ( //check "if theres an email, show the header, else, dont show".
+            <>
+              <Header />
+            </>
+          ) : null}
         </Row>
 
         <Row className="main">
@@ -30,7 +37,11 @@ const App = () => {
         </Row>
 
         <Row>
-          <Footer />
+          {email ? ( //check "if theres an email, show the footer, else, dont show".
+            <>
+              <Footer />
+            </>
+          ) : null}
         </Row>
       </Router>
     </Container>
