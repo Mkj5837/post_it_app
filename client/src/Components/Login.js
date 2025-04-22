@@ -39,13 +39,11 @@ const Login = () => {
 
   var x = 1;
   // Handle form submission
-
   const onSubmit = (data) => {
-    console.log("Form Data", data); // You can handle the form submission here
+    console.log("Form Data", data); //handle the form submission here.
   };
 
   //function that will be invoked when the user clicks the login button
-
   const handleLogin = () => {
     const userData = {
       email,

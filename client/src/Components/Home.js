@@ -9,8 +9,8 @@ import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
-
   const email = useSelector((state) => state.users.user.email);
+
   useEffect(() => {
     if (!email) {
       navigate("/login");
