@@ -23,7 +23,7 @@ const SharePosts = () => {
     //validate the msg, it cant be empty.
     if (!postMsg.trim()) {
       alert("Post message is required."); //display an alert or set an error.
-      return; // Exit the function early if validation fails
+      return; // Exit the function early if validation fails.
     }
     const postData = {
       postMsg: postMsg,
