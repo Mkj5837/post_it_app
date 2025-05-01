@@ -4,15 +4,29 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../Features/PostSlice";
 import { Table } from "reactstrap";
 import moment from "moment"; //to convert the timestamp.
+import { likePost } from "../Features/PostSlice";
+import { FaThumbsUp } from "react-icons/fa6";
 
 const Posts = () => {
   //needed vars
   const posts = useSelector((state) => state.posts.posts);
   const email = useSelector((state) => state.users.user.email);
+  const userId = useSelector((state) => state.users.user._id);
 
   //needed hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleLikePost = (postId) => {
+    const postData = {
+      postId: postId,
+
+      userId: userId,
+    };
+
+    dispatch(likePost(postData));
+    navigate("/");
+  };
 
   useEffect(() => {
     dispatch(getPosts());
@@ -30,7 +44,13 @@ const Posts = () => {
               <td>{post.email}</td>
               <td>
                 {post.postMsg}
-                {/* <p>{moment(post.createdAt).fromNow()}</p> */}
+                <p>{moment(post.createdAt).fromNow()}</p>
+                <p className="likes">
+                  <a href="#" onClick={() => handleLikePost(post._id)}>
+                    <FaThumbsUp />
+                  </a>
+                  ({post.likes.count})
+                </p>
               </td>
             </tr>
           ))}
