@@ -6,18 +6,17 @@ import storage from "redux-persist/lib/storage"; // Uses localStorage by default
 import { combineReducers } from "redux";
 
 // Redux Persist config
-const persistConfig = {
-  key: "reduxstore", // The key to identify the persisted state in storage (can be named anything/user defined)
 
+const persistConfig = {
+  key: "reduxstore", // The key to identify the persisted state in storage
   storage, // The storage method (localStorage)
 };
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const rootReducer = combineReducers({
   users: usersReducer, // Manage users slice of the state
   posts: postReducer, // Manage posts slice of the state
 });
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer, // Use the persisted reducer in the store

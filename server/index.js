@@ -19,7 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 //Database connection
-const connectString = `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=${EVN.DB_APPNAME}`;
+const connectString = `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=${ENV.DB_APPNAME}`;
 
 mongoose.connect(connectString);
 
